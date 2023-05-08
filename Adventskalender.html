@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <div class="calendar">
+        <h1>Adventskalender</h1>
+        <div class="day locked" data-day="1">1</div>
+        <div class="day locked" data-day="2">2</div>
+        <div class="day locked" data-day="3">3</div>
+        <div class="day locked" data-day="4">4</div>
+        <div class="day locked" data-day="5">5</div>
+        <div class="day locked" data-day="6">6</div>
+        <div class="day locked" data-day="7">7</div>
+        <div class="day locked" data-day="8">8</div>
+        <div class="day locked" data-day="9">9</div>
+        <div class="day locked" data-day="10">10</div>
+        <div class="day locked" data-day="11">11</div>
+        <div class="day locked" data-day="12">12</div>
+        <div class="day locked" data-day="13">13</div>
+        <div class="day locked" data-day="14">14</div>
+        <div class="day locked" data-day="15">15</div>
+        <div class="day locked" data-day="16">16</div>
+        <div class="day locked" data-day="17">17</div>
+        <div class="day locked" data-day="18">18</div>
+        <div class="day locked" data-day="19">19</div>
+        <div class="day locked" data-day="20">20</div>
+        <div class="day locked" data-day="21">21</div>
+        <div class="day locked" data-day="22">22</div>
+        <div class="day locked" data-day="23">23</div>
+        <div class="day locked" data-day="24">24</div>
+      </div>
+      
+
+    <style>
+        h1 {
+			text-align: center;
+			font-size: 5em;
+		}
+
+        body {
+            background-image: url("https://image.freepik.com/vektoren-kostenlos/roter-hintergrund-mit-schneeflocken_1053-839.jpg");
+            background-size: cover;
+        }
+        .day {
+			display: inline-block;
+			background-color: #eee;
+			color: white;
+			font-size: 30px;
+			font-weight: bold;
+			border: none;
+			padding: 60px;
+			margin: 10px;
+			text-align: center;
+			cursor: pointer;
+			transition: transform 0.3s ease-in-out;
+            text-decoration: none
+		}
+		.day:hover {
+			box-shadow: 0 0 5px #f5f3f3;
+            transform: scale(1.2);
+            cursor: pointer;
+		}
+
+        .day.opened {
+        background-color: #f00;
+        color: #fff;
+        }
+
+        .day.locked {
+        background-color: #ccc;
+        cursor: not-allowed;
+        }
+    </style>
+
+    <script>
+
+       const today = new Date();
+       const currentDay = today.getDate();
+
+       const days = document.querySelectorAll(".day");
+
+       days.forEach((day) => {
+         const dayNumber = Number(day.dataset.day);
+  
+       if (dayNumber <= currentDay) {
+          day.classList.add("opened");
+          day.classList.remove("locked");
+       }   
+  
+       day.addEventListener("click", () => {
+         if (day.classList.contains("opened")) {
+          switch (dayNumber) {
+            case 1:
+              console.log("Tag 1 wurde geöffnet!");
+              window.location.href = "https://www.tesla.com/de_de/tag1.html";
+              break;
+            case 2:
+              console.log("Tag 2 wurde geöffnet!");
+             window.location.href = "https://www.microsoft.com/de-at//tag2.html";
+             break;
+            case 3:
+              console.log("Tag 3 wurde geöffnet!");
+              window.location.href = "https://de.wikipedia.org/wiki/Track/tag3.html";
+              break;
+            default:
+              console.log(`Tag ${dayNumber} wurde geöffnet!`);
+              window.location.href = "https://de.wikipedia.org/wiki/Track/default.html";
+            break;
+         }
+    } else {
+      console.log(`Tag ${dayNumber} ist noch verschlossen.`);
+    }
+  });
+});
+
+
+    </script>
